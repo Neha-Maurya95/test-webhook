@@ -17,7 +17,7 @@ jobs:
 resources:
   pipelines:
     - pipeline: TriggerPipeline
-      source: TriggerPipeline  # Use the name of your triggering pipeline resource
+      source: test-schedule  # Use the name of your triggering pipeline resource
       trigger:
         branches:
           exclude:

@@ -15,7 +15,7 @@ resources:
         branches:
           exclude:
             - '*'
-
+steps:
 - task: CmdLine@2
   inputs:
     script: |

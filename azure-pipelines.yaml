@@ -9,21 +9,19 @@ pr:
 pool:
   vmImage: 'ubuntu-latest'
 
+jobs:
+- job: Build
+  dependsOn:
+    - TriggerPipeline
+  steps:
+  - script: echo This job depends on the triggering pipeline
+    displayName: 'Echo Dependency'
+
 resources:
   pipelines:
-    - pipeline: BackendPipeline  # Set a unique name for the backend pipeline resource
-      project: devops
-      source: test-schedule
+    - pipeline: TriggerPipeline
+      source: TriggerPipeline  # Use the name of your triggering pipeline resource
       trigger:
         branches:
           exclude:
             - '*'
-
-      
-stages:  
-    - stage: Build
-      jobs:
-        - job: Build
-          steps:
-          - script: echo Write your commands here
-            displayName: 'Echo Hello World'

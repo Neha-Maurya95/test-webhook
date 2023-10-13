@@ -19,14 +19,8 @@ resources:
           exclude:
             - '*'
 
-dependencies:
-- pipeline: BackendPipeline  # Reference to your backend pipeline
-  source: BackendPipeline
-  trigger:
-    branches:
-      exclude:
-      - '*'            
-  stages:  
+      
+stages:  
     - stage: Build
       jobs:
         - job: Build

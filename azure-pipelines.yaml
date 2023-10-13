@@ -8,17 +8,7 @@ pool:
 
 jobs:
 - job: Build
-  dependsOn:
-    - TriggerPipeline
   steps:
   - script: echo This job depends on the triggering pipeline
     displayName: 'Echo Dependency'
 
-resources:
-  pipelines:
-    - pipeline: TriggerPipeline
-      source: test-schedule  # Use the name of your triggering pipeline resource
-      trigger:
-        branches:
-          exclude:
-            - '*'

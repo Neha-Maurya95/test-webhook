@@ -3,29 +3,33 @@ trigger:
     include:
       - main
 
-pool:
-  vmImage: 'ubuntu latest'
+pr:
+- main
 
-#resources:
-#  pipelines:
-#    - pipeline: BackendPipeline  # Set a unique name for the backend pipeline resource
-#      project: devops
-#      source: test-schedule
-#      trigger:
-#        branches:
-#          exclude:
-#            - '*'
+pool:
+  vmImage: 'ubuntu-latest'
+
+resources:
+  pipelines:
+    - pipeline: BackendPipeline  # Set a unique name for the backend pipeline resource
+      project: devops
+      source: test-schedule
+      trigger:
+        branches:
+          exclude:
+            - '*'
 
 dependencies:
-- pipeline: BackendPipelineName   # Reference to your backend pipeline
+- pipeline: BackendPipeline  # Reference to your backend pipeline
+  source: BackendPipeline
   trigger:
     branches:
       exclude:
       - '*'            
-    stages:  
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo Write your commands here
-            echo Hello world
+  stages:  
+    - stage: Build
+      jobs:
+        - job: Build
+          steps:
+          - script: echo Write your commands here
+            displayName: 'Echo Hello World'

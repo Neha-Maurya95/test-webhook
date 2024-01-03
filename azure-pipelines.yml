@@ -33,9 +33,9 @@ steps:
 
 - script: |
     mkdir $(Build.ArtifactStagingDirectory)/build-output
-    echo "isApiTriggered=${{ isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/build-output/variable.txt
+    echo "isApiTriggered=${{ isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
   displayName: 'Set Build Variable'
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/build-output'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'build-output'

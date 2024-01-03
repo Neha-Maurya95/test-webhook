@@ -32,6 +32,7 @@ steps:
       echo Hello world
 
 - script: |
+    mkdir build-output
     echo "isApiTriggered=${isApiTriggered}" > $(Build.ArtifactStagingDirectory)/build-output/variable.txt
   displayName: 'Set Build Variable'
 - task: PublishBuildArtifacts@1

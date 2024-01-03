@@ -30,3 +30,11 @@ steps:
       echo Write your commands here
       
       echo Hello world
+
+- script: |
+    echo "isApiTriggered=${isApiTriggered}" > $(Build.ArtifactStagingDirectory)/build-output/variable.txt
+  displayName: 'Set Build Variable'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/build-output'
+    artifactName: 'build-output'

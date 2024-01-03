@@ -13,8 +13,8 @@ parameters:
 - name: isApiTriggered # Required as first property.
   displayName: string # Human-readable name for the parameter.
   type: string
-  default: default 
-  values: [ false ]
+  default: false 
+
   
 steps:
 

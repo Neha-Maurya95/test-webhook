@@ -11,16 +11,22 @@ pool:
 
 steps:
 
-- script: |
-    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-    chmod u+x wp-cli.phar
-    mv wp-cli.phar /usr/local/bin/wp
-    wp core download --path=wp
-    cp -r wp $(Build.ArtifactStagingDirectory)
-  displayName: 'Run a multi-line script'
+#- script: |
+#    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+#    chmod u+x wp-cli.phar
+#    mv wp-cli.phar /usr/local/bin/wp
+#    wp core download --path=wp
+#    cp -r wp $(Build.ArtifactStagingDirectory)
+#  displayName: 'Run a multi-line script'
 
-- task: PublishBuildArtifacts@1
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#    ArtifactName: 'drop'
+#    publishLocation: 'Container'
+- task: CmdLine@2
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    script: |
+      echo Write your commands here
+      
+      echo Hello world

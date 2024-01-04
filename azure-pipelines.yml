@@ -14,20 +14,25 @@ parameters:
   type: object
   default: ''
 
-variables:
-- name: isApiTriggered
-  value: ${{ parameters.ApiTriggered }}
+#variables:
+#- name: isApiTriggered
+#  value: ${{ parameters.ApiTriggered }}
 
 
   
 steps:
-- script: echo "The value of isApiTriggered is $(isApiTriggered)"
-  displayName: 'Print Variable Value'
+#- script: echo "The value of isApiTriggered is $(isApiTriggered)"
+#  displayName: 'Print Variable Value'
 
-- script: |
-    echo isApiTriggered="$(isApiTriggered)" > $(Build.ArtifactStagingDirectory)/variable.txt
-  displayName: 'Set Build Variable'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $variable = '${{parameters.ApiTriggered}}'
+      $variable | Out-file $(Build.ArtifactStagingDirectory)\variable.txt
+      Get-Content $(Build.ArtifactStagingDirectory)\variable.txt
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'build-output'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: Container

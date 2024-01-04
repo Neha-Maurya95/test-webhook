@@ -21,9 +21,13 @@ variables:
 
   
 steps:
-#- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]${{ parameters.ApiTriggered }}"
-- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]$(ApiTriggered)"
-  displayName: 'Set Variable as Environment Variable'
-
 - script: echo "The value of isApiTriggered is $(isApiTriggered)"
   displayName: 'Print Variable Value'
+
+- script: |
+    echo isApiTriggered="$(isApiTriggered)" > $(Build.ArtifactStagingDirectory)/variable.txt
+  displayName: 'Set Build Variable'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'build-output'

@@ -10,14 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 parameters:
-- name: isApiTriggered # Required as first property.
+- name: ApiTriggered # Required as first property.
   type: object
   default: ''
 
   
 steps:
-- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]"${{ parameters.isApiTriggered }}""
+- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]"${{ parameters.ApiTriggered }}""
   displayName: 'Set Variable as Environment Variable'
 
-- script: echo "The value of MyVariable is $(isApiTriggered)"
+- script: echo "The value of MyVariable is ${isApiTriggered)"
   displayName: 'Print Variable Value'

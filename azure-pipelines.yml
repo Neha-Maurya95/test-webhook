@@ -21,8 +21,8 @@ variables:
 
   
 steps:
-#- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]${{ parameters.ApiTriggered }}"
-#  displayName: 'Set Variable as Environment Variable'
+- script: echo "##vso[task.setvariable variable=isApiTriggered;isOutput=true]${{ parameters.ApiTriggered }}"
+  displayName: 'Set Variable as Environment Variable'
 
 - script: echo 'The value of MyVariable is $(isApiTriggered)'
   displayName: 'Print Variable Value'

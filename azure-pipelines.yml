@@ -33,7 +33,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo "The value of anotherParameter is: ${{ parameters.isApiTriggered }} 
+      echo "The value of anotherParameter is: ${{ parameters.isApiTriggered }}" 
 
 #- script: |
 #    mkdir $(Build.ArtifactStagingDirectory)/build-output

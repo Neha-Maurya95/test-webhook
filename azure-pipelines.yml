@@ -35,11 +35,11 @@ steps:
     script: |
       echo "The value of anotherParameter is: ${{ parameters.isApiTriggered }}" 
 
-#- script: |
-#    mkdir $(Build.ArtifactStagingDirectory)/build-output
-#    echo "isApiTriggered=${{ isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
-#  displayName: 'Set Build Variable'
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#    artifactName: 'build-output'
+- script: |
+    mkdir $(Build.ArtifactStagingDirectory)/build-output
+    echo "isApiTriggered=${{ parameters.isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
+  displayName: 'Set Build Variable'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'build-output'

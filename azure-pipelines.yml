@@ -37,7 +37,7 @@ steps:
 
 - script: |
     mkdir $(Build.ArtifactStagingDirectory)/build-output
-    echo "${{ parameters.isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
+    echo isApiTriggered="${{ parameters.isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
   displayName: 'Set Build Variable'
 - task: PublishBuildArtifacts@1
   inputs:

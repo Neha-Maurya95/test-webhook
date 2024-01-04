@@ -14,9 +14,9 @@ parameters:
   type: object
   default: ''
 
-#variables:
-#- name: isApiTriggered
-#  value: ''
+variables:
+- name: isApiTriggered
+  value: ${{ parameters.ApiTriggered }}
 
 
   

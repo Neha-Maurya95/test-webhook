@@ -9,11 +9,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-parameters:
-- name: isApiTriggered # Required as first property.
-  displayName: string # Human-readable name for the parameter.
-  type: string
-  default: false 
+#parameters:
+#- name: isApiTriggered # Required as first property.
+#  displayName: string # Human-readable name for the parameter.
+#  type: string
+#  default: false 
 
   
 steps:
@@ -34,15 +34,13 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Write your commands here
-      
-      echo Hello world
+      echo "The value of anotherParameter is: $(isApiTriggered)"
 
-- script: |
-    mkdir $(Build.ArtifactStagingDirectory)/build-output
-    echo "isApiTriggered=${{ isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
-  displayName: 'Set Build Variable'
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'build-output'
+#- script: |
+#    mkdir $(Build.ArtifactStagingDirectory)/build-output
+#    echo "isApiTriggered=${{ isApiTriggered }}" > $(Build.ArtifactStagingDirectory)/variable.txt
+#  displayName: 'Set Build Variable'
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#    artifactName: 'build-output'

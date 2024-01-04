@@ -12,7 +12,7 @@ pool:
 parameters:
 - name: isApiTriggered # Required as first property.
   type: object
-  default: "" 
+  default: ''
 
   
 steps:

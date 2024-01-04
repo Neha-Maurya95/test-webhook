@@ -17,7 +17,7 @@ parameters:
 variables:
 - name: isApiTriggered
   value: ''
-  settable: true
+
 
   
 steps:

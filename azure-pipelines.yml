@@ -21,13 +21,8 @@ parameters:
 
   
 steps:
-#- script: echo "The value of isApiTriggered is $(isApiTriggered)"
-#  displayName: 'Print Variable Value'
-
-- bash: 
-    echo "##vso[task.setvariable variable=sauce]crushed tomatoes" # remember to use double quotes
-- bash: 
-    echo "my pipeline variable is $sauce"
+- script: echo "The value of isApiTriggered is $(isApiTriggered)"
+  displayName: 'Print Variable Value'
 
 - task: PowerShell@2
   inputs:

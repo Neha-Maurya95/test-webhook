@@ -14,15 +14,9 @@ parameters:
   type: object
   default: ''
 
-#variables:
-#- name: isApiTriggered
-#  value: ${{ parameters.ApiTriggered }}
-
-
   
 steps:
-- script: echo "The value of isApiTriggered is $(isApiTriggered)"
-  displayName: 'Print Variable Value'
+
 
 - task: PowerShell@2
   inputs:

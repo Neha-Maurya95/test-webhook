@@ -7,7 +7,7 @@ the [Bitpoke Stack](https://www.bitpoke.io/stack/).
 ## Quickstart
 
 Just fork this repo and you are good to go. After cloning your repo you need to
-install WordPress into wp folder....... To do so, you can run:
+install WordPress into wp folder.... To do so, you can run:
 
 ```console
 $ wp core download --path=wp

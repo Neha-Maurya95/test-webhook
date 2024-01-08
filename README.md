@@ -16,7 +16,7 @@ $ wp core download --path=wp
 ## Building docker images
 
 The Bitpoke Stack provides a base image for building and developing classic
-WordPress sites. The `Dockerfile` is as simple as:
+WordPress sites....... The `Dockerfile` is as simple as:
 
 ```Dockerfile
 FROM docker.io/bitpoke/wordpress-runtime:6.0.3

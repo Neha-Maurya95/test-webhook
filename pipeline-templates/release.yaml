@@ -22,12 +22,21 @@ stages:
         Write-Host $testcondition
       displayName: Testvariable
 
-  - job: manual_approval
-    displayName: "Manual Approval"
-    dependsOn: Deploy
-    pool: server 
-    steps: 
-    - task: ManualIntervention@8
+#  - job: manual_approval
+#    displayName: "Manual Approval"
+#    dependsOn: Deploy
+#    pool: server 
+#    steps: 
+#    - task: ManualIntervention@8
+#      inputs:
+#        emailRecipients: 'neha.maurya@netsmartz.com'
+#      condition: and(succeeded(), ne(variables['testcondition'], 'True'))
+
+    - task: ManualValidation@0
+      timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
-        emailRecipients: 'neha.maurya@netsmartz.com'
+        notifyUsers: |
+          neha.maurya@netsmartz.com
+        instructions: 'Please validate the build configuration and resume'
+        onTimeout: 'resume'
       condition: and(succeeded(), ne(variables['testcondition'], 'True'))

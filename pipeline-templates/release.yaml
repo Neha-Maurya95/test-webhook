@@ -31,3 +31,4 @@ stages:
       timeoutInMinutes: 5
       inputs:
         instructions: "Hi, please validate"
+    condition: ne(variables['testcondition'], 'True')

@@ -3,10 +3,9 @@
 # the release stage of our pipeline 
 
 parameters:
-- name: ApiTriggered # Required as first property.
-  type: object
-  default: ''
-    
+- name: ApiTriggered
+  type: string
+  default: ''    
 
 stages:
 - stage: Deploy

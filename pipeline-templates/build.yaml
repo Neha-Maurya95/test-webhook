@@ -3,6 +3,11 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+parameters:
+- name: ApiTriggered
+  type: string
+  default: ''
+
 stages:
 - stage: Build
   jobs:

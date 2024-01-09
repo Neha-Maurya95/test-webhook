@@ -18,9 +18,9 @@ stages:
     - script: |
         echo "hello world"
       displayName: 'Command Line Script'
-    - script: |
-        echo "hello world"
-      displayName: 'Command Line Script'
+    - powershell: |
+        Write-Host $env:testcondition
+      displayName: Testvariable
 
   - job: manual_approval
     displayName: "Manual Approval"

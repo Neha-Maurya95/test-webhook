@@ -8,7 +8,7 @@ stages:
   jobs:
   - job: Build
     pool:
-      vmImage: windows-2019
+      vmImage: windows-latest
     steps:
     - task: PowerShell@2
       inputs:
@@ -18,7 +18,7 @@ stages:
           $variable | Out-file $(Build.ArtifactStagingDirectory)\variable.txt
           Get-Content $(Build.ArtifactStagingDirectory)\variable.txt
     - powershell: |
-        Write-Host $env:testcondition
+        Write-Host $testcondition
       displayName: Testvariable
 
     - task: PublishBuildArtifacts@1

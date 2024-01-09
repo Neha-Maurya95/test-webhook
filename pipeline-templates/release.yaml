@@ -18,9 +18,14 @@ stages:
     - script: |
         echo "hello world"
       displayName: 'Command Line Script'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          $variable = '${{parameters.ApiTriggered}}
     - powershell: |
-        Write-Host $(testcondition)
-      displayName: Testvariable
+        Write-Host $variable
+
 
   - job: manual_approval
     displayName: "Manual Approval"
@@ -31,4 +36,4 @@ stages:
       timeoutInMinutes: 5
       inputs:
         instructions: "Hi, please validate"
-    condition: ne(variables['testcondition'], 'True')
+    condition: ne(variables['variable'], 'True')

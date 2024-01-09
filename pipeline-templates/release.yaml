@@ -19,13 +19,14 @@ stages:
         echo "hello world"
       displayName: 'Command Line Script'
     - powershell: |
-        Write-Host $env:testcondition
+        Write-Host $testcondition
       displayName: Testvariable
 
   - job: manual_approval
     displayName: "Manual Approval"
     dependsOn: Deploy
-    pool: server
+    pool:
+      vmImage: windows-latest
     steps: 
     - task: ManualIntervention@8
       inputs:

@@ -22,11 +22,11 @@ stages:
         Write-Host $testcondition
       displayName: Testvariable
 
-#  - job: manual_approval
-#    displayName: "Manual Approval"
+  - job: manual_approval
+    displayName: "Manual Approval"
 #    dependsOn: Deploy
 #    pool: server 
-#    steps: 
+    steps: 
 #    - task: ManualIntervention@8
 #      inputs:
 #        emailRecipients: 'neha.maurya@netsmartz.com'
@@ -34,7 +34,6 @@ stages:
 
     - task: ManualValidation@0
       timeoutInMinutes: 1440 # task times out in 1 day
-      pool: server
       inputs:
         notifyUsers: |
           neha.maurya@netsmartz.com

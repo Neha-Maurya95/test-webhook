@@ -21,6 +21,12 @@ stages:
     - script: |
         echo "hello world"
       displayName: 'Command Line Script'
+
+  - job: manual_approval
+    displayName: "Manual Approval"
+    dependsOn: Deploy
+    pool: server
+    steps: 
     - task: ManualIntervention@8
       inputs:
         emailRecipients: 'neha.maurya@netsmartz.com'

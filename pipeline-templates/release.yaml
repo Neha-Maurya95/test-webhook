@@ -1,0 +1,30 @@
+# File: pipeline-templates/release.yaml
+# This is a file elsewhere in the repository that represents 
+# the release stage of our pipeline 
+
+parameters:
+- name: ApiTriggered # Required as first property.
+  type: object
+  default: ''
+    
+variables:
+- name: testcondition
+  value: ${{parameters.ApiTriggered}}'
+
+stages:
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    pool:
+      name: windows-latest
+    steps:
+    - script: |
+        echo "hello world"
+      displayName: 'Command Line Script'
+    - script: |
+        echo "hello world"
+      displayName: 'Command Line Script'
+    - task: ManualIntervention@8
+      inputs:
+        emailRecipients: 'neha.maurya@netsmartz.com'
+      condition: and(succeeded(), ne(variables['testcondition'], 'True'))

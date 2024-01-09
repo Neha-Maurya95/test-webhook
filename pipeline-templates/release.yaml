@@ -18,9 +18,9 @@ stages:
         echo "Deploying... Using ApiTriggered: ${{ parameters.ApiTriggered }}"
 
   - job: manual_approval
-#    displayName: "Manual Approval"
-#    dependsOn: Deploy
-#    pool: server
+    displayName: "Manual Approval"
+    dependsOn: Deploy
+    pool: server
     steps:
     - task: ManualValidation@0
       timeoutInMinutes: 5

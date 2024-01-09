@@ -13,7 +13,7 @@ stages:
   jobs:
   - job: Deploy
     pool:
-      name: windows-latest
+      vmImage: windows-latest
     steps:
     - script: |
         echo "hello world"

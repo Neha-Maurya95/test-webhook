@@ -14,6 +14,10 @@ parameters:
   type: object
   default: ''
 
+variables:
+- name: testcondition
+  value: ${{parameters.ApiTriggered}}'
+
 
 stages:
 - template: pipeline-templates/build.yaml

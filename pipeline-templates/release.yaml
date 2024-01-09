@@ -26,4 +26,4 @@ stages:
       timeoutInMinutes: 5
       inputs:
         instructions: "Hi, please validate"
-    condition: ne(variables['ApiTriggered'], 'True')
+    condition: ne(variables['ApiTriggered'], 'true')

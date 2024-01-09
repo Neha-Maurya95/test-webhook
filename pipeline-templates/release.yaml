@@ -22,7 +22,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          $variable = '${{parameters.ApiTriggered}}
+          $variable = '${{parameters.ApiTriggered}}'
     - powershell: |
         Write-Host $variable
 

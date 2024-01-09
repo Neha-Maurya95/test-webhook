@@ -19,7 +19,7 @@ stages:
         echo "hello world"
       displayName: 'Command Line Script'
     - powershell: |
-        Write-Host $testcondition
+        Write-Host $(testcondition)
       displayName: Testvariable
 
   - job: manual_approval

@@ -22,9 +22,6 @@ stages:
           $variable = '${{parameters.ApiTriggered}}'
           $variable | Out-file $(Build.ArtifactStagingDirectory)\variable.txt
           Get-Content $(Build.ArtifactStagingDirectory)\variable.txt
-    - powershell: |
-        Write-Host $testcondition
-      displayName: Testvariable
 
     - task: PublishBuildArtifacts@1
       inputs:

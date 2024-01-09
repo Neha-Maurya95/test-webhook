@@ -19,10 +19,10 @@ stages:
 
   - job: manual_approval
     displayName: "Manual Approval"
-    dependsOn: Deploy
-    pool: server
+#    dependsOn: Deploy
+#    pool: server
     steps:
-    - task: ManualValidation@0
+    - task: ManualIntervention
       timeoutInMinutes: 5
       inputs:
         instructions: "Hi, please validate"

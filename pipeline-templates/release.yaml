@@ -30,5 +30,4 @@ stages:
     pool: server
     steps:
     - task: ManualIntervention@8
-      inputs:
       condition: eq(variables['Build.Reason'], 'IndividualCI')

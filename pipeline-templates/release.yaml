@@ -22,6 +22,7 @@ stages:
   
     - powershell: |
        Write-Host $env:isApiTriggered
+      condition: eq(variables['Build.Reason'], 'IndividualCI')
 
   - job: manual_approval
     displayName: "Manual Approval"

@@ -15,8 +15,6 @@ stages:
       vmImage: windows-latest
     steps:
     - powershell: |
-      targetType: 'inline'
-      script: |
        $myValue = ${{ parameters.ApiTriggered }}";
        Write-Host $myValue
        Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
@@ -34,4 +32,4 @@ stages:
       inputs:
         instructions: "Hi, please validate"
         emailRecipients: 'neha.maurya@netsmartz.com'
-      condition: eq(variables['ApiTriggered'], 'True')
+      condition: eq(variables['isApiTriggered'], 'True')

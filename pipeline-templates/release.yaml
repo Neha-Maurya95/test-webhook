@@ -29,5 +29,8 @@ stages:
     dependsOn: Deploy
     pool: server
     steps:
-    - task: ManualIntervention@8
-      condition: eq(variables['Build.Reason'], 'Manual')
+    - task: ManualValidation@0
+      timeoutInMinutes: 5
+      inputs:
+        instructions: "Hi, please validate"
+      condition: eq(variables['Build.Reason'], 'IndividualCI')

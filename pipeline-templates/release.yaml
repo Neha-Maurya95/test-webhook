@@ -32,4 +32,4 @@ stages:
       inputs:
         instructions: "Hi, please validate"
         emailRecipients: 'neha.maurya@netsmartz.com'
-      condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI'))
+      condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI'))

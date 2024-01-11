@@ -15,7 +15,7 @@ stages:
       vmImage: windows-latest
     steps:
     - powershell: |
-       $myValue = ${{ parameters.ApiTriggered }}";
+       $myValue = "${{ parameters.ApiTriggered }}";
        Write-Host $myValue
        Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
       displayName: 'set variable'

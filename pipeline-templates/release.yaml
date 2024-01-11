@@ -14,8 +14,16 @@ stages:
     pool:
       vmImage: windows-latest
     steps:
-    - script: | 
-        echo "Deploying... Using ApiTriggered: ${{ parameters.ApiTriggered }}"
+    - powershell: |
+      targetType: 'inline'
+      script: |
+       $myValue = ${{ parameters.ApiTriggered }}";
+       Write-Host $myValue
+       Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
+      displayName: 'set variable'
+  
+    - powershell: |
+       Write-Host $env:isApiTriggered
 
   - job: manual_approval
     displayName: "Manual Approval"
@@ -26,4 +34,4 @@ stages:
       inputs:
         instructions: "Hi, please validate"
         emailRecipients: 'neha.maurya@netsmartz.com'
-      condition: ne(variables['Build.Reason'], 'Manual')
+      condition: eq(variables['ApiTriggered'], 'True')

@@ -20,10 +20,10 @@ stages:
   - job: manual_approval
     displayName: "Manual Approval"
 #    dependsOn: Deploy
-#    pool: server
+    pool: server
     steps:
-    - task: ManualIntervention@1
+    - task: ManualIntervention@0
       timeoutInMinutes: 5
       inputs:
         instructions: "Hi, please validate"
-    condition: ne(variables['ApiTriggered'], 'true')
+      condition: eq(variables['Build.Reason'], 'PullRequest')

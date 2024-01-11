@@ -20,9 +20,9 @@ variables:
 
 
 stages:
-- template: pipeline-templates/build.yaml
-  parameters:
-    ApiTriggered: ${{ parameters.ApiTriggered }}
+#- template: pipeline-templates/build.yaml
+#  parameters:
+#    ApiTriggered: ${{ parameters.ApiTriggered }}
 - template: pipeline-templates/release.yaml
   parameters:
     ApiTriggered: ${{ parameters.ApiTriggered }}

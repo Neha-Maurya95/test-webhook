@@ -31,6 +31,4 @@ stages:
     steps:
     - task: ManualIntervention@8
       inputs:
-        instructions: "Hi, please validate"
-        emailRecipients: 'neha.maurya@netsmartz.com'
-      condition: eq(variables['Build.Reason'], 'PullRequest')
+      condition: eq(variables['Build.Reason'], 'IndividualCI')

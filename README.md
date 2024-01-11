@@ -30,7 +30,7 @@ or using docker or vagrant. The recommended way is to use docker-compose.
 ### wp-cli local server
 
 This repo comes with wp-cli configured. To start the server you just need to
-run:
+run...................:
 
 ```console
 $ wp server

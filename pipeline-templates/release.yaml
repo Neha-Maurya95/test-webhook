@@ -22,8 +22,8 @@ stages:
 #    dependsOn: Deploy
     pool: server
     steps:
-    - task: ManualIntervention@0
-      timeoutInMinutes: 5
+    - task: ManualIntervention@8
       inputs:
         instructions: "Hi, please validate"
+        emailRecipients: 'neha.maurya@netsmartz.com'
       condition: eq(variables['Build.Reason'], 'PullRequest')

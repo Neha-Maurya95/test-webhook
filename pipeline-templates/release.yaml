@@ -35,6 +35,11 @@ stages:
         instructions: "Hi, please validate"
       condition: eq(variables['Build.Reason'], 'IndividualCI')
 
+  - job: Merge
+    dependsOn: manual_approval
+    pool:
+      vmImage: ubuntu-latest
+    steps:
     - script: |
         git checkout main
         git merge qa

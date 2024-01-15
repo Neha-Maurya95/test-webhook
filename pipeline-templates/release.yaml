@@ -49,5 +49,5 @@ stages:
         targetBranch: 'main'
         title: 'merging qa to main'
         reviewers: 'muskaan.vohra@netsmartz.com'
-      condition: succeeded('manual_approval')
+      condition: succeeded()
 

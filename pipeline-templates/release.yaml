@@ -26,6 +26,12 @@ stages:
         script: |
           ls -lR '$(Build.ArtifactStagingDirectory)'
       
+    - powershell: |
+       $myValue = "${{ parameters.ApiTriggered }}";
+       Write-Host $myValue
+       Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
+      displayName: 'set variable'
+
   - job: manual_approval
     displayName: "Manual Approval"
     dependsOn: Deploy
@@ -51,5 +57,5 @@ stages:
         targetBranch: 'main'
         title: 'merging qa to main'
         reviewers: 'muskaan.vohra@netsmartz.com'
-      condition: succeeded()
+      condition: and(succeeded(), eq(variables.ApiTriggered, ''))
 

@@ -24,7 +24,7 @@ stages:
     - task: CmdLine@2
       inputs:
         script: |
-          ls -lR
+          ls -lR '$(Build.ArtifactStagingDirectory)'
       
   - job: manual_approval
     displayName: "Manual Approval"

@@ -23,6 +23,7 @@ stages:
           $variable | Out-file $(Build.ArtifactStagingDirectory)\variable.txt
           Get-Content $(Build.ArtifactStagingDirectory)\variable.txt
 
+
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'

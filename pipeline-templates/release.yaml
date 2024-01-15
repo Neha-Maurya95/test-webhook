@@ -49,3 +49,4 @@ stages:
         targetBranch: 'main'
         title: 'merging qa to main'
         reviewers: 'muskaan.vohra@netsmartz.com'
+      condition: eq(variables['Build.Reason'], 'IndividualCI')

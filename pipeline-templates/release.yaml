@@ -48,4 +48,4 @@ stages:
         sourceBranch: 'qa'
         targetBranch: 'main'
         title: 'merging qa to main'
-        reviewers: 'neha.maurya@netsmartz.com'
+        reviewers: 'muskaan.vohra@netsmartz.com'

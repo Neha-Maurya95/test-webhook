@@ -57,4 +57,4 @@ stages:
         targetBranch: 'main'
         title: 'merging qa to main'
         reviewers: 'muskaan.vohra@netsmartz.com'
-      condition: and(succeeded(), eq(variables.ApiTriggered, ''))
+      condition: eq(variables.ApiTriggered, '')

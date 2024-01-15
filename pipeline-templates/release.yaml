@@ -14,9 +14,12 @@ stages:
     pool:
       vmImage: windows-latest
     steps:
-    - task: download-artifacts-new@2
+    - task: DownloadBuildArtifacts@1
       inputs:
-        artifactDestinationFolder: '$(Build.ArtifactStagingDirectory)'
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'drop'
+        downloadPath: '$(Build.ArtifactStagingDirectory)'
 
     - task: CmdLine@2
       inputs:
@@ -29,7 +32,7 @@ stages:
     pool: server
     steps:
     - task: ManualValidation@0
-      timeoutInMinutes: 5
+      timeoutInMinutes: 30
       inputs:
         instructions: "Hi, please validate"
       condition: eq(variables['Build.Reason'], 'IndividualCI')

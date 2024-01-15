@@ -38,7 +38,7 @@ stages:
   - job: Merge
     dependsOn: manual_approval
     pool:
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     steps:
     - task: CreatePullRequest@1
       inputs:

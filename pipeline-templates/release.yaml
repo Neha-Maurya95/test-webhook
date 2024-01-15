@@ -14,16 +14,15 @@ stages:
     pool:
       vmImage: windows-latest
     steps:
-    - powershell: |
-       $myValue = "${{ parameters.ApiTriggered }}";
-       Write-Host $myValue
-       Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
-      displayName: 'set variable'
-  
-    - powershell: |
-       Write-Host $env:isApiTriggered
-      condition: eq(variables['Build.Reason'], 'IndividualCI')
+    - task: download-artifacts-new@2
+      inputs:
+        artifactDestinationFolder: '$(Build.ArtifactStagingDirectory)'
 
+    - task: CmdLine@2
+      inputs:
+        script: |
+          ls -lR
+      
   - job: manual_approval
     displayName: "Manual Approval"
     dependsOn: Deploy

@@ -40,11 +40,12 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        git checkout main
-        git merge qa
-        git push origin main
-        az repos pr create --title "Merge qa to main" --source-branch "qa" --target-branch "main" --repository "Neha-Maurya95" --project "wordpressapp-" --reviewer "neha.maurya@netsmartz.com"
-      displayName: 'Merge dev to staging and create PR'
-      env:
-        AZURE_DEVOPS_EXT_PAT: $(PAT)
+    - task: CreatePullRequest@1
+      inputs:
+        repoType: 'GitHub'
+        githubEndpoint: 'GitHub Connection for PR'
+        githubRepository: 'Neha-Maurya95/wordpressapp-'
+        sourceBranch: 'qa'
+        targetBranch: 'main'
+        title: 'merging qa to main'
+        reviewers: 'neha.maurya@netsmartz.com'

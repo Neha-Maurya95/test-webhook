@@ -26,12 +26,6 @@ stages:
         script: |
           ls -lR '$(Build.ArtifactStagingDirectory)'
       
-    - powershell: |
-       $myValue = "${{ parameters.ApiTriggered }}";
-       Write-Host $myValue
-       Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
-      displayName: 'set variable'
-
   - job: manual_approval
     displayName: "Manual Approval"
     dependsOn: Deploy
@@ -48,6 +42,12 @@ stages:
     pool:
       vmImage: windows-latest
     steps:
+    - powershell: |
+       $myValue = "${{ parameters.ApiTriggered }}";
+       Write-Host $myValue
+       Write-Host "##vso[task.setvariable variable=isApiTriggered]$myValue"
+      displayName: 'set variable'
+
     - task: CreatePullRequest@1
       inputs:
         repoType: 'GitHub'

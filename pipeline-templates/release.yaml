@@ -55,6 +55,6 @@ stages:
         githubRepository: 'Neha-Maurya95/wordpressapp-'
         sourceBranch: 'qa'
         targetBranch: 'main'
-        title: 'merging qa to main'
+        title: 'merging qa to main $(build.buildid)'
         reviewers: 'muskaan.vohra@netsmartz.com'
-      condition: eq(variables.isApiTriggered, '')
+      condition: and(succeeded(), eq(variables.isApiTriggered, ''))
